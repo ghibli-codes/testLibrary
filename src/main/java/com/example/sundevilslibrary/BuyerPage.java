@@ -491,58 +491,58 @@ public class BuyerPage extends HBox{ // extends Parent
 
     public HBox createBookItem(Book book){
 
-        HBox bookItem = new HBox(140);
-        VBox leftPane = new VBox(20);
-        VBox rightPane = new VBox(20);
+            HBox bookItem = new HBox(140);
+            VBox leftPane = new VBox(20);
+            VBox rightPane = new VBox(20);
 
 
-        Label title = new Label(book.getTitle());
-        Label condition = new Label(book.getCondition());
-        Label category = new Label(book.getCategory());
-        Label price = new Label("$" + book.getPrice().toString());
+            Label title = new Label(book.getTitle());
+            Label condition = new Label(book.getCondition());
+            Label category = new Label(book.getCategory());
+            Label price = new Label("$" + book.getPrice().toString());
 
 
-        leftPane.getChildren().addAll(title, condition, category);
-        Button addToCart = new Button("Add to Cart");
-        if (cart.contains(book)){
-            addToCart.setText("Added");
-            addToCart.getStyleClass().clear();
-            addToCart.setAlignment(Pos.CENTER);
-            addToCart.getStyleClass().add("added");
-        }
-
-
-        addToCart.setOnAction(event -> {
-            cart.add(book);
-
-
-            System.out.printf("Cart Contains: %d\n", cart.size());
-            for (Book books2: cart){
-
-
-                System.out.printf("%s\n", books2.getTitle());
+            leftPane.getChildren().addAll(title, condition, category);
+            Button addToCart = new Button("Add to Cart");
+            if (cart.contains(book)){
+                addToCart.setText("Added");
+                addToCart.getStyleClass().clear();
+                addToCart.setAlignment(Pos.CENTER);
+                addToCart.getStyleClass().add("added");
             }
-            addToCart.setText("Added");
-            addToCart.getStyleClass().clear();
+
+
+            addToCart.setOnAction(event -> {
+                cart.add(book);
+
+
+                System.out.printf("Cart Contains: %d\n", cart.size());
+                for (Book books2: cart){
+
+
+                    System.out.printf("%s\n", books2.getTitle());
+                }
+                addToCart.setText("Added");
+                addToCart.getStyleClass().clear();
+                addToCart.setAlignment(Pos.CENTER);
+                addToCart.getStyleClass().add("added");
+            });
+            addToCart.getStyleClass().add("addToCart");
             addToCart.setAlignment(Pos.CENTER);
-            addToCart.getStyleClass().add("added");
-        });
-        addToCart.getStyleClass().add("addToCart");
-        addToCart.setAlignment(Pos.CENTER);
-        rightPane.getChildren().addAll(price, addToCart);
+            rightPane.getChildren().addAll(price, addToCart);
 //            rightPane.setPrefWidth(70);
 //            leftPane.setPrefWidth(70);
-        leftPane.setAlignment(Pos.CENTER_LEFT);
-        rightPane.setAlignment(Pos.CENTER_RIGHT);
-        rightPane.prefWidthProperty().bind(leftPane.prefWidthProperty());
-        bookItem.setAlignment(Pos.CENTER);
-        bookItem.getChildren().addAll(leftPane, rightPane);
-        bookItem.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        bookItem.setPadding(new Insets(10,0,10,0));
+            leftPane.setAlignment(Pos.CENTER_LEFT);
+            rightPane.setAlignment(Pos.CENTER_RIGHT);
+            rightPane.prefWidthProperty().bind(leftPane.prefWidthProperty());
+            bookItem.setAlignment(Pos.CENTER);
+            bookItem.getChildren().addAll(leftPane, rightPane);
+            bookItem.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+            bookItem.setPadding(new Insets(10,0,10,0));
 
 
-        bookItem.getStyleClass().add("bookCard");
+            bookItem.getStyleClass().add("bookCard");
 
-        return bookItem;
+            return bookItem;
     }
 };
